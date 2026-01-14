@@ -15,7 +15,7 @@ def get_db():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Govind@123",
+        password="Gov123",
         database="milk_center"
     )
 
@@ -255,3 +255,4 @@ else:
     else:
 
         st.warning("No records for this farmer in selected billing period")
+
