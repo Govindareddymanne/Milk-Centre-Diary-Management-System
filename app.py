@@ -8,7 +8,7 @@ import io
 import calendar
 
 # ================= CONSTANT RATE =================
-RATE = 7  # Fixed rate used by milk centre
+RATE = 7  
 
 # ---------------- DATABASE CONNECTION ----------------
 def get_db():
@@ -43,7 +43,7 @@ def generate_bill_pdf(name, start_date, end_date, total_milk, total_amount):
 
 # ---------------- STREAMLIT CONFIG ----------------
 st.set_page_config(page_title="Milk Centre Diary", layout="wide")
-st.title("🥛 Milk Centre Diary Management System")
+st.title("Milk Centre Diary Management System")
 
 menu = st.sidebar.selectbox(
     "Menu",
@@ -57,7 +57,7 @@ menu = st.sidebar.selectbox(
 
 # ================= FARMER REGISTRATION =================
 if menu == "Farmer Registration":
-    st.header("👨‍🌾 Farmer Registration")
+    st.header("Farmer Registration")
 
     name = st.text_input("Farmer Name")
     mobile = st.text_input("Mobile Number")
@@ -98,7 +98,6 @@ elif menu == "Milk Entry":
         fat = st.number_input("Fat Percentage", min_value=0.0)
 
         if st.button("Submit Milk Entry"):
-            # 🔒 Prevent duplicate Morning/Evening entry
             cur.execute("""
                 SELECT COUNT(*) AS cnt
                 FROM milk_collection
@@ -254,4 +253,5 @@ else:
                 f"Your milk bill amount is ₹ {result['total_amount']:.2f}"
             )
     else:
+
         st.warning("No records for this farmer in selected billing period")
